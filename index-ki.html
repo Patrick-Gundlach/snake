@@ -19,7 +19,7 @@
     }
   </style>
 </head>
-<body>
+<body onload="init()">
   <div id="board"></div>
   <script>
     // JS for the game
@@ -28,26 +28,53 @@
     var snake_direction;
 
     function init() {
-      snake = document.getElementById("snake");
+      snake = document.createElement("div");
+      snake.id = "snake";
+      document.getElementById("board").appendChild(snake);
       snake_length = 1;
       snake_direction = "right";
+      snake.style.left = '0px';
+      snake.style.top = '0px';
       setInterval(gameLoop, 100);
     }
 
     function gameLoop() {
       // Move the snake
       if (snake_direction == "right") {
-        snake.style.left = snake.offsetLeft + 10 + "px";
+        snake.style.left = parseInt(snake.style.left) + 10 + "px";
       } else if (snake_direction == "left") {
-        snake.style.left = snake.offsetLeft - 10 + "px";
+        snake.style.left = parseInt(snake.style.left) - 10 + "px";
       } else if (snake_direction == "up") {
-        snake.style.top = snake.offsetTop - 10 + "px";
+        snake.style.top = parseInt(snake.style.top) - 10 + "px";
       } else if (snake_direction == "down") {
-        snake.style.top = snake.offsetTop + 10 + "px";
+        snake.style.top = parseInt(snake.style.top) + 10 + "px";
       }
     }
 
-    window.onload = init;
+    document.onkeydown = function(e) {
+      switch (e.keyCode) {
+        case 37:
+          if (snake_direction != "right") {
+            snake_direction = "left";
+          }
+          break;
+        case 38:
+          if (snake_direction != "down") {
+            snake_direction = "up";
+          }
+          break;
+        case 39:
+          if (snake_direction != "left") {
+            snake_direction = "right";
+          }
+          break;
+        case 40:
+          if (snake_direction != "up") {
+            snake_direction = "down";
+          }
+          break;
+      }
+    };
   </script>
 </body>
 </html>
