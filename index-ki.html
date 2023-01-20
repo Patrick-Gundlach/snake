@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Snake Game</title>
+  <style>
+    /* CSS for the game board */
+    #board {
+      width: 400px;
+      height: 400px;
+      background-color: #ddd;
+      position: relative;
+    }
+    /* CSS for the snake */
+    #snake {
+      width: 10px;
+      height: 10px;
+      background-color: #000;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+  <div id="board"></div>
+  <script>
+    // JS for the game
+    var snake;
+    var snake_length;
+    var snake_direction;
+
+    function init() {
+      snake = document.getElementById("snake");
+      snake_length = 1;
+      snake_direction = "right";
+      setInterval(gameLoop, 100);
+    }
+
+    function gameLoop() {
+      // Move the snake
+      if (snake_direction == "right") {
+        snake.style.left = snake.offsetLeft + 10 + "px";
+      } else if (snake_direction == "left") {
+        snake.style.left = snake.offsetLeft - 10 + "px";
+      } else if (snake_direction == "up") {
+        snake.style.top = snake.offsetTop - 10 + "px";
+      } else if (snake_direction == "down") {
+        snake.style.top = snake.offsetTop + 10 + "px";
+      }
+    }
+
+    window.onload = init;
+  </script>
+</body>
+</html>
