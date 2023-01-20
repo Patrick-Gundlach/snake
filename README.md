@@ -10,6 +10,5 @@ Obst hinzufügen, das die Schlange essen kann
 Bei der KI fehlen sachen wie:
 Kollisionserkennung (z.B. Schlange prallt gegen die Wände oder sich selbst)
 Punktezähler
-Möglichkeit zum Ändern der Richtung durch Tastatureingabe
 Obst hinzufügen, das die Schlange essen kann
 Anzeige von Spielover, wenn die Schlange stirbt
